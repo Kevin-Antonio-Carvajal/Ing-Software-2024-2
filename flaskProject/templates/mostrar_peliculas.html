@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>IdPelicula</th>
+                <th>Nombre</th>
+                <th>Genero</th>
+                <th>Duracion</th>
+                <th>Inventario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pelicula in peliculas %}
+            <tr>
+                <td>{{ pelicula.idPelicula }}</td>
+                <td>{{ pelicula.nombre }}</td>
+                <td>{{ pelicula.genero }}</td>
+                <td>{{ pelicula.duracion }}</td>
+                <td>{{ pelicula.inventario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/"><button type="button">Regresar al inicio</button></a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>ApPat</th>
+                <th>ApMat</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>SuperUser</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.idUsuario }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apPat }}</td>
+                <td>{{ usuario.apMat }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.password }}</td>
+                <td>{{ usuario.superUser }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/"><button type="button">Regresar al inicio</button></a>
+</body>
+</html>
