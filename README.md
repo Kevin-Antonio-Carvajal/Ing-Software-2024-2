@@ -1,4 +1,4 @@
-# Despues de compilar ejecutar
+# Despues de clonar ejecutar:
 - npm install
 - npm start
 
