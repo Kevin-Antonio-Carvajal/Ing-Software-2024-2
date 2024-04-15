@@ -4,6 +4,7 @@ import CRUDClientes from './components/Clientes/CRUDClientes';
 import CRUDPeliculas from './components/Peliculas/CRUDPeliculas';
 import CRURentas from './components/Rentar/CRURentas';
 
+
 import './App.css';
 
 const ThemeContext = React.createContext();
