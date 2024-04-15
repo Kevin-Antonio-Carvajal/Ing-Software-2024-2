@@ -1,46 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import CRUDClientes from './components/Clientes/CRUDClientes';
+import CRUDPeliculas from './components/Peliculas/CRUDPeliculas';
+import CRURentas from './components/Rentar/CRURentas';
 
-import "./App.css";
+import './App.css';
 
-import Alumnos from "./components/Alumnos/Alumnos";
-import NuevoAlumno from "./components/NuevoAlumno/NuevoAlumno";
+const ThemeContext = React.createContext();
 
 function App() {
-  const [peliculas, setPeliculas] = useState([
-    { id: 1, title: "Spiderman", director: "Sam R." },
-    { id: 2, title: "Batman", director: "Tim Burton" },
-    { id: 3, title: "Inception", director: "Christopher Nolan", inventario: 4 },
-  ]);
+  const [theme, setTheme] = useState('light');
 
-  const [alumnos, setAlumnos] = useState([
-    {
-      nombre: "Fernando",
-      apellido: "Fong",
-      numCta: 313320679,
-    },
-    {
-      nombre: "Valeria",
-      apellido: "Garcia",
-      numCta: 314006088,
-    },
-    {
-      nombre: "Erick",
-      apellido: "Martinez",
-      numCta: 414890123,
-    },
-  ]);
-
-  const agregarAlumno = (alumno) => {
-    const nuevoAlumno = [alumno, ...alumnos];
-    setAlumnos(nuevoAlumno);
-    console.log(nuevoAlumno);
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
-    <div className="App">
-      <NuevoAlumno onAgregarAlumno={agregarAlumno} />
-      <Alumnos alumnos={alumnos} />
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <Router>
+        <div className={`App ${theme}`}>
+          <nav className="side-navigation">
+            <button onClick={toggleTheme}>Toggle Theme</button>
+            <ul>
+              <li>
+                <Link to="/usuarios">Usuarios</Link>
+              </li>
+              <li>
+                <Link to="/peliculas">Películas</Link>
+              </li>
+              <li>
+                <Link to="/rentas">Rentas</Link>
+              </li>
+            </ul>
+          </nav>
+          <main>
+            <Routes>
+              <Route path="/usuarios" element={<CRUDClientes />} />
+              <Route path="/peliculas" element={<CRUDPeliculas />} />
+              <Route path="/rentas" element={<CRURentas />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </ThemeContext.Provider>
   );
 }
 
